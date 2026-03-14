@@ -23,9 +23,11 @@ public class DemoAnimalsManagerApp {
                              new BufferedOutputStream(
                              new FileOutputStream(f)))) {
 
+            oos.writeObject((Integer)3);
             oos.writeObject(cat);
             oos.writeObject(bird);
             oos.writeObject(octo);
+            //oos.writeObject(null);
             oos.flush();
 
         } catch (IOException e) {
