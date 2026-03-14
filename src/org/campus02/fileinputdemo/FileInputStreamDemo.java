@@ -16,9 +16,9 @@ public class FileInputStreamDemo {
 
         System.out.println(file.length());
 
-        FileInputStream fis = null;
-        try {
-            fis = new FileInputStream(file);
+        //FileInputStream fis = null;
+        try (FileInputStream fis = new FileInputStream(file)) {
+            //fis = new FileInputStream(file);
 
             int byteRead;
             while ((byteRead = fis.read()) != -1) {
@@ -26,14 +26,14 @@ public class FileInputStreamDemo {
                 //System.out.println("arr.length = " + arr.length);
                 System.out.println(arr[0]);
             }
-            fis.close();
+            //fis.close();
 
         } catch (FileNotFoundException e) {
             System.out.println("Datei nicht gefunden: " + e.getMessage());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        finally {
+        /*finally {
             if (fis != null){
                 try {
                     fis.close();
@@ -41,7 +41,7 @@ public class FileInputStreamDemo {
                     throw new RuntimeException(e);
                 }
             }
-        }
+        }*/
 
     }
 }
