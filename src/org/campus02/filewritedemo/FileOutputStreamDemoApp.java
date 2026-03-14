@@ -1,9 +1,6 @@
 package org.campus02.filewritedemo;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 public class FileOutputStreamDemoApp {
 
@@ -11,12 +8,18 @@ public class FileOutputStreamDemoApp {
 
         File file = new File("D:\\temp\\ETS26\\sub-ordner\\dokumente\\newfile.txt");
 
-        try (FileOutputStream fos = new FileOutputStream(file)) {
+        try (BufferedOutputStream bos =
+                     new BufferedOutputStream(new FileOutputStream(file))) {
 
-            fos.write('a');
-            fos.write('b');
+            //BufferedOutputStream bos = new BufferedOutputStream(fos);
 
-            fos.flush();
+            bos.write('a');
+            bos.write('b');
+
+            //fos.write('a');
+            //fos.write('b');
+
+            bos.flush();
             //fos.close();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
